@@ -1,5 +1,5 @@
 [![Build Status](https://api.travis-ci.com/gkoudjou/primesum.svg?branch=master)](https://api.travis-ci.com/gkoudjou/primesum.svg?branch=master)
-[![Code Coverage](https://codecov.io/github/gkoudjou/primesum/coverage.svg)](https://codecov.io/github/gkoudjou/primesum/coverage.svg)
+[![codecov](https://codecov.io/gh/gkoudjou/primesum/branch/master/graph/badge.svg)](https://codecov.io/gh/gkoudjou/primesum)
 
 # PrimeSum
 Approach to solving the problem of the sum of the first N primes. Using stream.
