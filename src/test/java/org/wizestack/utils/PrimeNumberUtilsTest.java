@@ -1,6 +1,5 @@
 package org.wizestack.utils;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
@@ -8,17 +7,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class PrimeNumberUtilsTest {
 
     public static final int BOUND = 1000;
-    private Random numberGenerator;
-
-    @Before
-    public void setUp() {
-        numberGenerator = new Random();
-    }
 
     @Test
     public void thatEvenNumberAreNotPrime() {
@@ -38,7 +31,7 @@ public class PrimeNumberUtilsTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void thatNegativeNumberAreNotPrime() {
-        int randomNegativeNumber = numberGenerator.nextInt(BOUND) * -1;
+        int randomNegativeNumber = new Random().nextInt(BOUND) * -1;
         assertThat(PrimeNumberUtils.isPrime(randomNegativeNumber), is (false));
     }
 
