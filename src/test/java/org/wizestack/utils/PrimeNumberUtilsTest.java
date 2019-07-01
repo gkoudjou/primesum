@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.core.Is.is;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class PrimeNumberUtilsTest {
 
-    public static final int BOUND = 100;
+    public static final int BOUND = 1000;
     private Random numberGenerator;
 
     @Before
@@ -21,7 +22,7 @@ public class PrimeNumberUtilsTest {
 
     @Test
     public void thatEvenNumberAreNotPrime() {
-        int randomEvenNumber = numberGenerator.nextInt(BOUND) * 2;
+        int randomEvenNumber = ThreadLocalRandom.current().nextInt(2, BOUND) * 2;
         assertThat(PrimeNumberUtils.isPrime(randomEvenNumber), is(false));
     }
 
@@ -32,7 +33,7 @@ public class PrimeNumberUtilsTest {
 
     @Test
     public void thatSomeKnownOddNumbersArePrime() {
-        IntStream.of(11, 13, 17).forEach(value -> assertThat(PrimeNumberUtils.isPrime(value), is(true)));
+        IntStream.of(3, 5, 7, 11, 13, 17).forEach(value -> assertThat(PrimeNumberUtils.isPrime(value), is(true)));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -49,5 +50,10 @@ public class PrimeNumberUtilsTest {
     @Test
     public void thatOneIsNotPrime() {
         assertThat(PrimeNumberUtils.isPrime(1), is(false));
+    }
+
+    @Test
+    public void thatTwoIsPrime() {
+        assertThat(PrimeNumberUtils.isPrime(2), is(true));
     }
 }
