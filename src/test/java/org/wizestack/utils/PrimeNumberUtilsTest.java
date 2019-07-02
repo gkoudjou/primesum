@@ -29,7 +29,7 @@ public class PrimeNumberUtilsTest {
         IntStream.of(3, 5, 7, 11, 13, 17).forEach(value -> assertThat(PrimeNumberUtils.isPrime(value), is(true)));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void thatNegativeNumberAreNotPrime() {
         int randomNegativeNumber = new Random().nextInt(BOUND) * -1;
         assertThat(PrimeNumberUtils.isPrime(randomNegativeNumber), is (false));
